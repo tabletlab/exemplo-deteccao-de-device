@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Detecção de Device</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: url(img/bg.jpg) no-repeat;
+		}
+
+		#container {
+			text-align: center;
+			font-family: Courier, Arial;
+			color: #FFF;
+			font-size: 40px;
+			margin-top: 334px;
+			line-height: 50px;
+			height: 100px;
+		}
+
+		span {
+			padding: 0 15px;
+			background-color: #93b34c;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		Seu tablet é um <span id="tablet">[verificando...]</span> com sistema na versão <span id="versao">[verificando...]</span>.
+	</div>
+
+
+	<script type="text/javascript" src="scripts/tabletlab.js"></script>
+	<script type="text/javascript">
+		var tablet = document.getElementById('tablet');
+		var versao = document.getElementById('versao');
+		if (TL.sysInfo().iPad) {
+			tablet.innerHTML = 'iPad';
+		} else if (TL.sysInfo().androidTablet) {
+			tablet.innerHTML = 'Android';
+		} else {
+			tablet.innerHTML = 'Desconhecido';
+		}
+		versao.innerHTML = TL.sysInfo().osVersion;
+	</script>
+</body>
+</html>
